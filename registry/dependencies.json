@@ -1,0 +1,110 @@
+{
+  "generated": "2026-02-27",
+  "crossRepoDependencies": [
+    {
+      "from": "contentco-op-website",
+      "to": "acs-website",
+      "type": "event_bridge",
+      "description": "CC website inserts events (brief_message type) into shared events table. acs-website processEvents.js picks them up and routes to Mac Mini bridge.",
+      "tables": ["events"]
+    },
+    {
+      "from": "acs-website",
+      "to": "coscript",
+      "type": "api_proxy",
+      "description": "acs-website hosts CoEdit/CoScript API endpoints (coeditV1.js, coeditWatchlistSync.js) that read/write CoScript tables (script_jobs, script_variants, watchlists, vault_items).",
+      "tables": ["script_jobs", "script_variants", "watchlists", "vault_items", "videos", "video_metrics_daily", "video_outlier_scores", "video_features"]
+    },
+    {
+      "from": "acs-website",
+      "to": "coedit",
+      "type": "api_proxy",
+      "description": "acs-website hosts CoEdit V1 API (coeditV1.js, coEdit.js) that manages projects, documents, orgs for the CoEdit SPA.",
+      "tables": ["projects", "co_edit_documents", "co_edit_document_versions", "orgs", "org_members", "org_invites", "org_plan_subscriptions", "plan_limits", "usage_ledger", "coedit_usage_current_period"]
+    },
+    {
+      "from": "coedit",
+      "to": "acs-website",
+      "type": "client_api",
+      "description": "CoEdit SPA calls acs-website Netlify functions for V1 API (project CRUD, org management, billing).",
+      "notes": "CoEdit also directly queries Supabase for projects table via supabaseProjectService.ts"
+    },
+    {
+      "from": "acs-website",
+      "to": "blaze-v4 (Mac Mini)",
+      "type": "event_bridge",
+      "description": "Netlify functions insert events into events table. Mac Mini netlify_event_bridge.py polls every 60s and routes to OpenClaw agents for iMessage/email/Telegram.",
+      "tables": ["events"],
+      "notes": "Also rootBridge.js provides direct HTTP endpoint for Mac Mini to push data back."
+    }
+  ],
+  "sharedInfrastructure": {
+    "supabase": {
+      "project_ref": "briokwdoonawhxisbydy",
+      "used_by": ["acs-website", "contentco-op-website", "codeliver", "coscript", "coedit"],
+      "notes": "Single Supabase project for all repos. Tables are namespaced by convention (review_*, brief_*, script_*, co_edit_*)."
+    },
+    "netlify": {
+      "used_by": ["acs-website", "codeliver", "coscript", "coedit"],
+      "notes": "Each repo has its own Netlify site. acs-website is the primary backend."
+    },
+    "vercel": {
+      "used_by": ["contentco-op-website"],
+      "notes": "Turborepo monorepo deployed to Vercel."
+    },
+    "stripe": {
+      "used_by": ["acs-website"],
+      "notes": "Payment processing for ACS deposits and invoices."
+    },
+    "telegram": {
+      "used_by": ["acs-website"],
+      "bots": ["@agentastro_bot"],
+      "notes": "Client conversational AI + crew commands via telegramWebhook.js. Also: Mac Mini OpenClaw agents use separate bots (@blazenbailey_bot, @agentcc_creativedirectorbot)."
+    },
+    "whatsapp": {
+      "used_by": ["acs-website"],
+      "phone": "+13464015841",
+      "notes": "Meta Cloud API via whatsappWebhook.js. Also: Mac Mini FastAPI /api/whatsapp/* for outbound."
+    },
+    "google_workspace": {
+      "used_by": ["acs-website"],
+      "services": ["Calendar API", "Geocoding API", "Places API", "Gmail (DWD)"],
+      "notes": "Google Workspace for caio@astrocleanings.com. Service account for calendar sync."
+    },
+    "mac_mini": {
+      "role": "Orchestration layer",
+      "services": ["OpenClaw gateway (18789)", "FastAPI (8899)", "iMessage relay", "Gmail monitor", "26 LaunchAgents"],
+      "notes": "Mac Mini M4 runs Blaze V4 — polls events table, sends iMessage, monitors Gmail, runs YouTube learning engine, morning briefings."
+    }
+  },
+  "dataFlows": [
+    {
+      "name": "Client Quote → Job Pipeline",
+      "flow": "submitQuote.js → contacts + quotes + events → processEvents.js → Mac Mini bridge → OpenClaw → Telegram notification to Caio → admin review → bookSlot.js → jobs + notifications → confirmAppointment.js"
+    },
+    {
+      "name": "Telegram Client Message",
+      "flow": "Telegram → telegramWebhook.js → _conversationAgent.js (classify intent) → handler (book/status/reschedule/cancel/faq/human) → conversations table + sendReply()"
+    },
+    {
+      "name": "WhatsApp Client Message",
+      "flow": "Meta Cloud API → whatsappWebhook.js → _conversationAgent.js → handler → conversations table + sendWhatsAppReply()"
+    },
+    {
+      "name": "Crew Job Lifecycle",
+      "flow": "Job scheduled → sendJobReminders.js (hourly) → crew notification → crewUpdateJobStatus.js → events table → Mac Mini bridge → client notification"
+    },
+    {
+      "name": "Post-Service Feedback",
+      "flow": "Job completed → sendFeedbackRequest.js (*/30) → notification with feedback link → submitFeedback.js → feedback table → team notification"
+    },
+    {
+      "name": "Content Co-op Brief",
+      "flow": "Client submits brief via CC portal → creative_briefs + events table → Mac Mini bridge → OpenClaw cc-worker → brief_messages for updates"
+    },
+    {
+      "name": "CoScript Generation",
+      "flow": "User creates watchlist → coscript watchlists API → watchlist sync → outlier detection → script generation (Anthropic) → script_variants → user reviews/fixes"
+    }
+  ]
+}

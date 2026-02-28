@@ -1,0 +1,38 @@
+name: Schema Validation
+
+on:
+  push:
+    paths:
+      - 'schema/**'
+      - 'registry/**'
+  pull_request:
+    paths:
+      - 'schema/**'
+      - 'registry/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON registries
+        run: |
+          echo "Validating registry JSON files..."
+          for f in registry/*.json; do
+            echo "  Checking $f"
+            python3 -m json.tool "$f" > /dev/null || { echo "FAIL: $f is invalid JSON"; exit 1; }
+          done
+          echo "All JSON files valid."
+
+      - name: Check schema file exists
+        run: |
+          [ -f schema/master-schema.sql ] || { echo "FAIL: master-schema.sql missing"; exit 1; }
+          echo "Schema file present."
+
+      - name: Run sync check
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: node scripts/sync-check.js

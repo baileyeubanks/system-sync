@@ -1,0 +1,187 @@
+{
+  "generated": "2026-02-27",
+  "repos": {
+    "acs-website": {
+      "platform": "Netlify",
+      "framework": "Static HTML + Netlify Functions",
+      "domain": "astrocleanings.com",
+      "functions": {
+        "_internal": [
+          { "name": "_adminAuth.js", "type": "middleware", "description": "Admin JWT auth (requireAdmin, requireRoot)" },
+          { "name": "_clientAuth.js", "type": "middleware", "description": "Client JWT auth, Supabase admin client, json() helper" },
+          { "name": "_coeditV1Core.js", "type": "middleware", "description": "CoEdit V1 shared logic" },
+          { "name": "_conversationAgent.js", "type": "middleware", "description": "Shared conversational AI engine (intent classifier, FAQ, escalation)" },
+          { "name": "_eta.js", "type": "middleware", "description": "ETA calculation helpers" },
+          { "name": "_notify.js", "type": "middleware", "description": "Multi-channel notification (telegram, imessage, whatsapp, email) + fallback chain + logging" },
+          { "name": "_rootAuth.js", "type": "middleware", "description": "Root/super-admin auth" }
+        ],
+        "admin": [
+          { "name": "adminApplicants.js", "method": "GET/POST", "auth": "admin", "tables": ["applicants", "job_applicants"] },
+          { "name": "adminCalendarEvents.js", "method": "GET", "auth": "admin", "tables": ["calendar_sync", "jobs"] },
+          { "name": "adminClients.js", "method": "GET", "auth": "admin", "tables": ["contacts", "client_profiles", "interactions"] },
+          { "name": "adminCrew.js", "method": "GET/POST/PATCH", "auth": "admin", "tables": ["crew_members"] },
+          { "name": "adminDashboard.js", "method": "GET", "auth": "admin", "tables": ["admin_daily_snapshot", "jobs", "revenue_snapshots"] },
+          { "name": "adminFinance.js", "method": "GET", "auth": "admin", "tables": ["payments", "invoices", "revenue_snapshots"] },
+          { "name": "adminInvoices.js", "method": "GET/POST", "auth": "admin", "tables": ["invoices", "invoice_payments"] },
+          { "name": "adminJobs.js", "method": "GET/POST/PATCH", "auth": "admin", "tables": ["jobs", "job_crew_assignments"] },
+          { "name": "adminLiveLocations.js", "method": "GET", "auth": "admin", "tables": ["route_history", "crew_members"] },
+          { "name": "adminLogin.js", "method": "POST", "auth": "none", "tables": ["admin_auth"] },
+          { "name": "adminNotificationLog.js", "method": "GET", "auth": "admin", "tables": ["notification_log"] },
+          { "name": "adminProvisionClientAccount.js", "method": "POST", "auth": "admin", "tables": ["contacts", "client_auth"] },
+          { "name": "adminProvisionCrewPin.js", "method": "POST", "auth": "admin", "tables": ["crew_members", "crew_auth"] },
+          { "name": "adminQuotes.js", "method": "GET/PATCH", "auth": "admin", "tables": ["quotes"] },
+          { "name": "adminRequests.js", "method": "GET", "auth": "admin", "tables": ["client_requests"] },
+          { "name": "adminSettings.js", "method": "GET/POST", "auth": "admin", "tables": ["businesses"] },
+          { "name": "adminTasks.js", "method": "GET/POST/PATCH", "auth": "admin", "tables": ["tasks"] },
+          { "name": "adminTaxProfile.js", "method": "GET/POST", "auth": "admin", "tables": ["tax_profiles", "tax_deductions"] }
+        ],
+        "auth": [
+          { "name": "authForgotPassword.js", "method": "POST", "auth": "none" },
+          { "name": "authLogin.js", "method": "POST", "auth": "none", "tables": ["client_auth", "contacts"] },
+          { "name": "authResetPassword.js", "method": "POST", "auth": "none" },
+          { "name": "authSignup.js", "method": "POST", "auth": "none" },
+          { "name": "authVerifyEmail.js", "method": "GET", "auth": "none" },
+          { "name": "crewLogin.js", "method": "POST", "auth": "none", "tables": ["crew_members", "crew_auth"] },
+          { "name": "loginGoogle.js", "method": "POST", "auth": "none" },
+          { "name": "loginPin.js", "method": "POST", "auth": "none" },
+          { "name": "setPin.js", "method": "POST", "auth": "client" }
+        ],
+        "client": [
+          { "name": "bookSlot.js", "method": "POST", "auth": "client", "tables": ["jobs", "contacts"], "notifies": true },
+          { "name": "confirmAppointment.js", "method": "GET", "auth": "signed_link", "tables": ["jobs", "contacts"], "notifies": true },
+          { "name": "createRequest.js", "method": "POST", "auth": "client", "tables": ["client_requests"] },
+          { "name": "getAvailableSlots.js", "method": "GET", "auth": "none", "tables": ["jobs"] },
+          { "name": "getPortalData.js", "method": "GET", "auth": "client", "tables": ["jobs", "client_profiles"] },
+          { "name": "submitQuote.js", "method": "POST", "auth": "none", "tables": ["quotes", "contacts", "events"] },
+          { "name": "submitReview.js", "method": "POST", "auth": "none", "tables": ["reviews"] },
+          { "name": "getTestimonials.js", "method": "GET", "auth": "none", "tables": ["reviews"] },
+          { "name": "submitFeedback.js", "method": "POST", "auth": "none", "tables": ["feedback", "events"] },
+          { "name": "trackingData.js", "method": "GET", "auth": "tracking_token", "tables": ["job_tracking_tokens", "jobs", "route_history"] }
+        ],
+        "crew": [
+          { "name": "crewPortalData.js", "method": "GET", "auth": "crew", "tables": ["jobs", "crew_members"] },
+          { "name": "crewReportLocation.js", "method": "POST", "auth": "crew", "tables": ["route_history"] },
+          { "name": "crewUpdateJobStatus.js", "method": "POST", "auth": "crew", "tables": ["jobs", "events"] }
+        ],
+        "webhooks": [
+          { "name": "telegramWebhook.js", "method": "POST", "auth": "none", "tables": ["crew_members", "jobs", "events", "contacts", "conversations"], "description": "Dual-mode: crew commands + client conversational AI" },
+          { "name": "whatsappWebhook.js", "method": "GET/POST", "auth": "verify_token", "tables": ["contacts", "conversations"], "description": "Meta Cloud API webhook for client conversational AI" },
+          { "name": "stripeWebhook.js", "method": "POST", "auth": "stripe_signature", "tables": ["payments", "jobs"] },
+          { "name": "rootBridge.js", "method": "POST", "auth": "ops_key", "tables": ["events"], "description": "Mac Mini bridge endpoint" }
+        ],
+        "scheduled": [
+          { "name": "sendJobReminders.js", "schedule": "0 * * * *", "tables": ["jobs", "contacts"], "notifies": true },
+          { "name": "sendFeedbackRequest.js", "schedule": "*/30 * * * *", "tables": ["jobs", "events", "contacts"], "notifies": true },
+          { "name": "morningBrief.js", "schedule": "0 13 * * *", "tables": ["jobs", "revenue_snapshots"] },
+          { "name": "eveningDigest.js", "schedule": "0 1 * * *", "tables": ["jobs", "events"] },
+          { "name": "geocodeJobAddresses.js", "schedule": "*/15 * * * *", "tables": ["jobs", "job_locations"] },
+          { "name": "invoiceReminder.js", "schedule": "0 14 * * *", "tables": ["invoices", "contacts"], "notifies": true },
+          { "name": "leadNurture.js", "schedule": "0 15 * * 1", "tables": ["contacts", "lead_nurture_log"], "notifies": true },
+          { "name": "processEvents.js", "schedule": "* * * * *", "tables": ["events"] },
+          { "name": "requestReview.js", "schedule": "0 18 * * *", "tables": ["jobs", "review_requests"], "notifies": true },
+          { "name": "revenueTracker.js", "schedule": "0 2 * * *", "tables": ["revenue_snapshots", "payments"] },
+          { "name": "reviewAnalytics.js", "schedule": "0 3 * * 0", "tables": ["reviews"] },
+          { "name": "staleLeadCleanup.js", "schedule": "0 4 * * 0", "tables": ["contacts"] },
+          { "name": "uptimeMonitor.js", "schedule": "*/5 * * * *" }
+        ],
+        "coedit": [
+          { "name": "coEdit.js", "method": "GET/POST/PATCH/DELETE", "auth": "coedit_key", "tables": ["co_edit_documents", "co_edit_document_versions"] },
+          { "name": "coeditV1.js", "method": "various", "auth": "jwt", "tables": ["projects", "orgs", "org_members", "usage_ledger", "plan_limits"] },
+          { "name": "coeditFeatureExtraction.js", "method": "POST", "auth": "coedit_key" },
+          { "name": "coeditOutlierRecompute.js", "method": "POST", "auth": "coedit_key" },
+          { "name": "coeditWatchlistSync.js", "method": "POST", "auth": "coedit_key" }
+        ],
+        "finance": [
+          { "name": "createDepositCheckout.js", "method": "POST", "auth": "client", "tables": ["jobs"] },
+          { "name": "createPublicDepositCheckout.js", "method": "POST", "auth": "none" },
+          { "name": "generateInvoice.js", "method": "POST", "auth": "admin", "tables": ["invoices", "jobs"] },
+          { "name": "generateReferralCode.js", "method": "POST", "auth": "admin", "tables": ["referral_codes"] },
+          { "name": "sendInvoice.js", "method": "POST", "auth": "admin", "notifies": true },
+          { "name": "sendReceipt.js", "method": "POST", "auth": "admin", "notifies": true },
+          { "name": "validatePromo.js", "method": "POST", "auth": "none" },
+          { "name": "validateReferral.js", "method": "POST", "auth": "none", "tables": ["referral_codes"] }
+        ],
+        "misc": [
+          { "name": "propertyLookup.js", "method": "GET", "auth": "none" },
+          { "name": "submitApplication.js", "method": "POST", "auth": "none", "tables": ["applicants"] },
+          { "name": "upsertJobFromIntake.js", "method": "POST", "auth": "ops_key", "tables": ["jobs", "contacts"] }
+        ]
+      }
+    },
+    "contentco-op-website": {
+      "platform": "Vercel (Turborepo)",
+      "framework": "Next.js",
+      "domain": "contentco-op.com",
+      "functions": [
+        { "name": "api/auth/login", "method": "POST", "tables": [] },
+        { "name": "api/briefs", "method": "GET/POST", "tables": ["creative_briefs", "events"] },
+        { "name": "api/briefs/[id]", "method": "GET/PATCH", "tables": ["creative_briefs", "brief_status_history"] },
+        { "name": "api/briefs/[id]/files", "method": "GET/POST", "tables": ["brief_files"] },
+        { "name": "api/briefs/[id]/messages", "method": "GET/POST", "tables": ["brief_messages", "events"] },
+        { "name": "api/media/hero/transcode", "method": "POST", "tables": [] },
+        { "name": "api/media/thumbnail/approve", "method": "POST", "tables": [] },
+        { "name": "api/media/thumbnail/approved", "method": "GET", "tables": [] },
+        { "name": "api/media/thumbnail/extract", "method": "POST", "tables": [] },
+        { "name": "api/onboard/chat", "method": "POST", "tables": [] }
+      ]
+    },
+    "codeliver": {
+      "platform": "Netlify",
+      "framework": "Next.js",
+      "domain": "codeliver.cc",
+      "functions": [
+        { "name": "api/auth/login", "method": "POST" },
+        { "name": "api/auth/logout", "method": "POST" },
+        { "name": "api/auth/session", "method": "GET" },
+        { "name": "api/auth/signup", "method": "POST" },
+        { "name": "api/codeliver/approvals/[gateId]/decision", "method": "POST", "tables": ["approval_decisions", "approval_gates", "review_events", "review_assets"] },
+        { "name": "api/codeliver/assets", "method": "GET/POST", "tables": ["review_assets", "review_events"] },
+        { "name": "api/codeliver/assets/[id]", "method": "GET/PATCH", "tables": ["review_assets"] },
+        { "name": "api/codeliver/assets/[id]/audit-log", "method": "GET", "tables": ["review_events"] },
+        { "name": "api/codeliver/assets/[id]/comments", "method": "GET/POST", "tables": ["timecoded_comments", "review_events"] },
+        { "name": "api/codeliver/assets/[id]/comments/[commentId]", "method": "PATCH/DELETE", "tables": ["timecoded_comments", "review_events"] },
+        { "name": "api/codeliver/assets/[id]/gates", "method": "GET/POST", "tables": ["approval_gates", "review_events"] },
+        { "name": "api/codeliver/assets/[id]/versions", "method": "GET/POST", "tables": ["asset_versions", "review_events"] }
+      ]
+    },
+    "coscript": {
+      "platform": "Netlify",
+      "framework": "Next.js",
+      "domain": "coscript.cc",
+      "functions": [
+        { "name": "api/auth/login", "method": "POST" },
+        { "name": "api/auth/logout", "method": "POST" },
+        { "name": "api/auth/session", "method": "GET" },
+        { "name": "api/auth/signup", "method": "POST" },
+        { "name": "api/coscript/briefs", "method": "GET", "tables": ["briefs"] },
+        { "name": "api/coscript/outliers", "method": "GET", "tables": ["outlier_scores"] },
+        { "name": "api/coscript/scripts/[id]/fix", "method": "POST", "tables": ["script_fixes"] },
+        { "name": "api/coscript/scripts/[id]/history", "method": "GET", "tables": ["script_variants", "script_fixes"] },
+        { "name": "api/coscript/scripts/generate", "method": "POST", "tables": ["script_jobs", "script_variants"] },
+        { "name": "api/coscript/vault/save", "method": "POST", "tables": ["vault_items"] },
+        { "name": "api/coscript/watchlists", "method": "GET/POST", "tables": ["watchlists"] },
+        { "name": "api/coscript/watchlists/[id]/sync", "method": "POST", "tables": ["watchlists"] },
+        { "name": "api/drafts", "method": "GET/POST", "tables": ["drafts"] },
+        { "name": "api/drafts/[id]", "method": "GET/PATCH/DELETE", "tables": ["drafts"] },
+        { "name": "api/generate", "method": "POST", "tables": [] },
+        { "name": "api/share", "method": "POST", "tables": ["share_links"] }
+      ]
+    },
+    "coedit": {
+      "platform": "Netlify",
+      "framework": "Vite + React",
+      "domain": "coedit.cc",
+      "functions": [
+        { "name": "supabaseProjectService", "type": "client-side", "tables": ["projects"] }
+      ],
+      "notes": "Client-side SPA. Most logic runs in browser via Supabase JS client."
+    },
+    "portfolio": {
+      "platform": "Static",
+      "framework": "HTML",
+      "domain": "baileyeubanks.com",
+      "functions": [],
+      "notes": "Static portfolio site. No backend functions or Supabase usage."
+    }
+  }
+}

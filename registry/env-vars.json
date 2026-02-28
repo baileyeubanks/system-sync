@@ -1,0 +1,123 @@
+{
+  "generated": "2026-02-27",
+  "repos": {
+    "acs-website": {
+      "platform": "Netlify",
+      "env_vars": {
+        "SUPABASE_URL": { "required": true, "shared_with": ["contentco-op-website", "codeliver", "coscript"], "description": "Supabase project URL" },
+        "SUPABASE_SERVICE_ROLE_KEY": { "required": true, "aliases": ["SUPABASE_SERVICE_KEY", "SUPABASE_SERVICE_ROLE"], "description": "Supabase service role key for admin operations" },
+        "JWT_SECRET": { "required": true, "description": "JWT signing secret for admin auth" },
+        "CLIENT_AUTH_JWT_SECRET": { "required": true, "description": "JWT signing secret for client auth" },
+        "CONFIRM_SECRET": { "required": true, "description": "HMAC secret for signed confirmation links" },
+        "ASTRO_TELEGRAM_BOT_TOKEN": { "required": true, "description": "Telegram bot token for @agentastro_bot" },
+        "WHATSAPP_ACCESS_TOKEN": { "required": true, "description": "Meta WhatsApp Cloud API permanent system user token" },
+        "WHATSAPP_PHONE_NUMBER_ID": { "required": true, "value_hint": "975900538946294", "description": "WhatsApp Business phone number ID" },
+        "WHATSAPP_VERIFY_TOKEN": { "required": true, "value_hint": "blazeacs2026", "description": "Webhook verification token for Meta" },
+        "STRIPE_SECRET_KEY": { "required": true, "description": "Stripe API secret key" },
+        "STRIPE_WEBHOOK_SECRET": { "required": true, "description": "Stripe webhook signing secret" },
+        "STRIPE_DEPOSIT_SUCCESS_URL": { "required": false, "description": "Redirect URL after successful deposit" },
+        "STRIPE_DEPOSIT_CANCEL_URL": { "required": false, "description": "Redirect URL after cancelled deposit" },
+        "OPENAI_API_KEY": { "required": true, "description": "OpenAI API key for AI features" },
+        "OPENAI_MODEL": { "required": false, "default": "gpt-4o-mini", "description": "OpenAI model for generation" },
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL": { "required": true, "description": "Google service account for calendar sync" },
+        "GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY": { "required": true, "description": "Google service account private key (PEM)" },
+        "GOOGLE_CALENDAR_ID_CAIO": { "required": true, "description": "Caio's Google Calendar ID" },
+        "GOOGLE_CALENDAR_ID_BAILEY": { "required": false, "description": "Bailey's Google Calendar ID" },
+        "GOOGLE_OAUTH_CLIENT_ID": { "required": false, "description": "Google OAuth client ID" },
+        "GOOGLE_OAUTH_CLIENT_SECRET": { "required": false, "description": "Google OAuth client secret" },
+        "GOOGLE_OAUTH_REFRESH_TOKEN": { "required": false, "description": "Google OAuth refresh token" },
+        "GOOGLE_GEOCODE_API_KEY": { "required": true, "description": "Google Maps Geocoding API key" },
+        "GOOGLE_MAPS_API_KEY": { "required": false, "description": "Google Maps JS API key (client-side)" },
+        "GOOGLE_PLACES_API_KEY": { "required": false, "description": "Google Places API key" },
+        "GOOGLE_REVIEW_LINK": { "required": false, "description": "Direct Google review link for ACS" },
+        "GOOGLE_DWD_IMPERSONATION_SUBJECT": { "required": false, "description": "Gmail DWD impersonation email" },
+        "CO_EDIT_ACCESS_KEY": { "required": true, "aliases": ["CO_EDIT_KEY"], "description": "Internal API key for CoEdit endpoints" },
+        "COEDIT_JWT_SECRET": { "required": true, "description": "JWT secret for CoEdit V1 auth" },
+        "COEDIT_APP_URL": { "required": false, "description": "CoEdit application URL" },
+        "COEDIT_INTERNAL_EMAILS": { "required": false, "description": "Comma-separated internal team emails for CoEdit" },
+        "COEDIT_OPENAI_MODEL": { "required": false, "aliases": ["CO_EDIT_OPENAI_MODEL"], "description": "OpenAI model for CoEdit features" },
+        "OPS_INTAKE_KEY": { "required": true, "description": "API key for rootBridge/ops intake endpoint" },
+        "YOUTUBE_API_KEY": { "required": false, "description": "YouTube Data API key" },
+        "APIFY_TOKEN": { "required": false, "description": "Apify API token for TikTok scraping" },
+        "APIFY_TIKTOK_ACTOR_ID": { "required": false, "description": "Apify TikTok actor ID" },
+        "ZELLE_HANDLE": { "required": false, "description": "Zelle payment handle" },
+        "MAPBOX_TOKEN": { "required": true, "description": "Mapbox access token for crew tracking maps" }
+      },
+      "client_side": {
+        "NEXT_PUBLIC_SUPABASE_URL": { "description": "Supabase URL exposed to client JS" }
+      }
+    },
+    "contentco-op-website": {
+      "platform": "Vercel",
+      "env_vars": {
+        "SUPABASE_URL": { "required": true },
+        "SUPABASE_SERVICE_KEY": { "required": true },
+        "OPENAI_API_KEY": { "required": true },
+        "CCO_INVITE_CODE": { "required": true, "description": "Invite code for Content Co-op onboarding" },
+        "ORCHESTRATOR_PORT": { "required": false, "description": "Port for local orchestrator service" }
+      },
+      "client_side": {
+        "NEXT_PUBLIC_SUPABASE_URL": {},
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY": {},
+        "VITE_CODE": { "description": "Unknown purpose — needs audit" }
+      }
+    },
+    "codeliver": {
+      "platform": "Netlify",
+      "env_vars": {
+        "SUPABASE_URL": { "required": true },
+        "SUPABASE_SERVICE_KEY": { "required": true }
+      },
+      "client_side": {
+        "NEXT_PUBLIC_SUPABASE_URL": {},
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY": {}
+      }
+    },
+    "coscript": {
+      "platform": "Netlify",
+      "env_vars": {
+        "SUPABASE_URL": { "required": true },
+        "SUPABASE_SERVICE_KEY": { "required": true },
+        "ANTHROPIC_API_KEY": { "required": true, "description": "Anthropic API for script generation" }
+      },
+      "client_side": {
+        "NEXT_PUBLIC_SUPABASE_URL": {},
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY": {}
+      }
+    },
+    "coedit": {
+      "platform": "Netlify",
+      "env_vars": {},
+      "client_side": {
+        "VITE_SUPABASE_URL": {},
+        "VITE_SUPABASE_ANON_KEY": {},
+        "VITE_GOOGLE_API_KEY": {},
+        "VITE_ANTHROPIC_API_KEY": {},
+        "VITE_OPENAI_API_KEY": {},
+        "VITE_AI_PROXY_URL": { "description": "AI proxy URL to avoid exposing keys client-side" }
+      }
+    },
+    "portfolio": {
+      "platform": "Static",
+      "env_vars": {},
+      "notes": "No environment variables needed"
+    }
+  },
+  "shared_secrets": [
+    {
+      "name": "SUPABASE_URL",
+      "repos": ["acs-website", "contentco-op-website", "codeliver", "coscript", "coedit"],
+      "notes": "All repos share the same Supabase project (briokwdoonawhxisbydy)"
+    },
+    {
+      "name": "SUPABASE_SERVICE_KEY",
+      "repos": ["acs-website", "contentco-op-website", "codeliver", "coscript"],
+      "notes": "Server-side only. CoEdit uses anon key client-side."
+    },
+    {
+      "name": "OPENAI_API_KEY",
+      "repos": ["acs-website", "contentco-op-website"],
+      "notes": "Used for AI generation features"
+    }
+  ]
+}
