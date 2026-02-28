@@ -3,8 +3,6 @@
 #
 # Usage: ./scripts/audit-all.sh
 
-set -e
-
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 REPORTS_DIR="$REPO_DIR/reports"
@@ -22,18 +20,18 @@ WARN=0
 # 1. Health check
 echo "--- Running health check ---"
 if node "$SCRIPT_DIR/health-check.js" 2>&1; then
-  ((PASS++))
+  PASS=$((PASS + 1))
 else
-  ((FAIL++))
+  FAIL=$((FAIL + 1))
 fi
 echo ""
 
 # 2. Sync check
 echo "--- Running sync check ---"
 if node "$SCRIPT_DIR/sync-check.js" 2>&1; then
-  ((PASS++))
+  PASS=$((PASS + 1))
 else
-  ((WARN++))
+  WARN=$((WARN + 1))
 fi
 echo ""
 
