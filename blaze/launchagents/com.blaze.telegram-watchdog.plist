@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.blaze.telegram-watchdog</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/python3</string>
+    <string>/Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/ops/scripts/telegram_watchdog.py</string>
+  </array>
+  <key>StartInterval</key><integer>300</integer>
+  <key>StandardOutPath</key><string>/Users/_mxappservice/blaze-logs/telegram-watchdog.log</string>
+  <key>StandardErrorPath</key><string>/Users/_mxappservice/blaze-logs/telegram-watchdog.err.log</string>
+  <key>RunAtLoad</key><false/>
+</dict>
+</plist>

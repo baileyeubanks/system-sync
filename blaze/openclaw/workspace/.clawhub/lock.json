@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "skills": {
+    "figma": {
+      "version": "2.1.0",
+      "installedAt": 1771551259213
+    },
+    "tick-md": {
+      "version": "1.3.3",
+      "installedAt": 1771870501032
+    }
+  }
+}

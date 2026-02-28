@@ -1,0 +1,8 @@
+{
+  "id": "blaze-v4-tools",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

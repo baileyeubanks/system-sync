@@ -1,0 +1,217 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "f38f4e53-6180-4b80-bd9a-75ac80bf5a92",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "Morning Briefing",
+      "enabled": false,
+      "createdAtMs": 1771446390795,
+      "updatedAtMs": 1771760952340,
+      "schedule": {
+        "expr": "30 6 * * *",
+        "kind": "cron",
+        "tz": "America/Chicago"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "python3 /Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/ops/scripts/morning_briefing_v3.py"
+      },
+      "delivery": {
+        "mode": "announce",
+        "to": "telegram:7747110667",
+        "bestEffort": true
+      },
+      "state": {
+        "lastRunAtMs": 1771677000009,
+        "lastStatus": "ok",
+        "lastDurationMs": 7665,
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "c2bdcc78-7029-4915-9375-c582783624cb",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "Email Triage: Urgent Alert",
+      "enabled": false,
+      "createdAtMs": 1771448066066,
+      "updatedAtMs": 1771760953028,
+      "schedule": {
+        "tz": "America/Chicago",
+        "expr": "*/30 8-18 * * 1-5",
+        "kind": "cron"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Check unread email in bailey@contentco-op.com, caio@astrocleanings.com, and blaze@contentco-op.com using gog. Find URGENT emails only — action required, deadlines, from known important contacts. For each urgent email list: From, Subject, and why it is urgent. If none are urgent, say NONE URGENT."
+      },
+      "delivery": {
+        "mode": "announce",
+        "to": "telegram:7747110667",
+        "bestEffort": true
+      },
+      "state": {
+        "lastRunAtMs": 1771639738776,
+        "lastStatus": "ok",
+        "lastDurationMs": 33515,
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "56fd9f69-8f48-44f4-bc4d-4f07d2bc4f45",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "Email Triage: Full Daily",
+      "enabled": false,
+      "createdAtMs": 1771448069841,
+      "updatedAtMs": 1771760953711,
+      "schedule": {
+        "tz": "America/Chicago",
+        "kind": "cron",
+        "expr": "0 23 * * *"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Full daily email triage. Use gog to check all unread email in bailey@contentco-op.com, caio@astrocleanings.com, and blaze@contentco-op.com. Classify each email as ACTION (needs response/task), FYI (worth knowing), or NOISE (skip). List ACTION items first with From and Subject. Summarize FYI items. Count NOISE items."
+      },
+      "delivery": {
+        "mode": "announce",
+        "to": "telegram:7747110667",
+        "bestEffort": true
+      },
+      "state": {
+        "lastRunAtMs": 1771736400011,
+        "lastStatus": "ok",
+        "lastDurationMs": 120200,
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "7ebba3dd-7073-4d40-9c4c-70f46e84dcbd",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "Contact Brain CRM Sync",
+      "enabled": false,
+      "createdAtMs": 1771448191609,
+      "updatedAtMs": 1771760954390,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 23 * * *",
+        "tz": "America/Chicago"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "python3 /Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/ops/scripts/gmail_contact_sync.py"
+      },
+      "delivery": {
+        "mode": "announce",
+        "bestEffort": true
+      },
+      "state": {
+        "lastRunAtMs": 1771738200008,
+        "lastStatus": "ok",
+        "lastDurationMs": 7293,
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "03b01f85-0bb4-4c00-b157-e7f6f389fa4f",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "Business Advisory Council",
+      "enabled": false,
+      "createdAtMs": 1771457490804,
+      "updatedAtMs": 1771760955072,
+      "schedule": {
+        "expr": "0 1 * * *",
+        "tz": "America/Chicago",
+        "kind": "cron"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "message": "python3 /Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/ops/scripts/business_council.py",
+        "kind": "agentTurn"
+      },
+      "delivery": {
+        "mode": "announce",
+        "to": "telegram:7747110667",
+        "bestEffort": true
+      },
+      "state": {
+        "lastRunAtMs": 1771743600008,
+        "lastStatus": "ok",
+        "lastDurationMs": 9010,
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "17df8df5-f484-4d11-8b75-587a779e097b",
+      "agentId": "main",
+      "name": "Session Rotate",
+      "enabled": false,
+      "createdAtMs": 1771726494133,
+      "updatedAtMs": 1771760955759,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 4 * * *",
+        "tz": "America/Chicago"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "bash /Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/ops/scripts/session_rotate.sh"
+      },
+      "delivery": {
+        "mode": "none",
+        "channel": "last"
+      },
+      "state": {
+        "lastRunAtMs": 1771754400009,
+        "lastStatus": "ok",
+        "lastDurationMs": 91578,
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "2939114f-1005-4b7b-8ed2-f137305a100d",
+      "agentId": "main",
+      "name": "Token Keepalive",
+      "enabled": false,
+      "createdAtMs": 1771728862390,
+      "updatedAtMs": 1771760467491,
+      "schedule": {
+        "kind": "every",
+        "everyMs": 2700000,
+        "anchorMs": 1771728862390
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "bash /Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/ops/scripts/token_keepalive.sh"
+      },
+      "delivery": {
+        "mode": "none",
+        "channel": "last"
+      },
+      "state": {
+        "lastRunAtMs": 1771758562399,
+        "lastStatus": "ok",
+        "lastDurationMs": 94551,
+        "consecutiveErrors": 0
+      }
+    }
+  ]
+}

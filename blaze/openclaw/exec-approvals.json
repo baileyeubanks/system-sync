@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "socket": {},
+  "defaults": {},
+  "agents": {
+    "*": {
+      "allowlist": [
+        {
+          "pattern": "*",
+          "lastUsedAt": 1771715842277,
+          "id": "88a66e2f-4c4c-4b54-9df4-ff3ec02bdaf2"
+        }
+      ]
+    },
+    "main": {
+      "allowlist": [
+        {
+          "pattern": "*",
+          "lastUsedAt": 1771715844819,
+          "id": "618f7277-9019-47fd-bc7e-f214b1191019"
+        }
+      ]
+    },
+    "acs-worker": {
+      "allowlist": [
+        {
+          "pattern": "*",
+          "lastUsedAt": 1771715845427,
+          "id": "613eed6b-e527-42f7-a683-bb6070330ff1"
+        }
+      ]
+    },
+    "cc-worker": {
+      "allowlist": [
+        {
+          "pattern": "*",
+          "lastUsedAt": 1771715846042
+        }
+      ]
+    }
+  }
+}

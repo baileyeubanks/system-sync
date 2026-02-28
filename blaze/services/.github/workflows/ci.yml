@@ -1,0 +1,52 @@
+name: Blaze V4 CI
+
+on:
+  push:
+    branches: [main]
+    paths: ['blaze-v4/**']
+  pull_request:
+    branches: [main]
+    paths: ['blaze-v4/**']
+
+jobs:
+  validate:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate JSON configs
+        run: |
+          python3 -c "import json; json.load(open('blaze-v4/ops/config/business_os_manifest.json'))"
+          python3 -c "import json; json.load(open('blaze-v4/ops/config/machine-roles.json'))"
+          python3 -c "import json; json.load(open('blaze-v4/ops/config/openclaw.json'))"
+          echo "✓ All JSON configs valid"
+
+      - name: Validate shell scripts syntax
+        run: |
+          bash -n blaze-v4/ops/scripts/bootstrap.sh
+          bash -n blaze-v4/ops/scripts/mount-check.sh
+          bash -n blaze-v4/ops/scripts/hydrate-skills.sh
+          bash -n blaze-v4/ops/scripts/validate-runtime.sh
+          bash -n blaze-v4/ops/scripts/oauth-token-refresher.sh
+          echo "✓ All shell scripts pass syntax check"
+
+      - name: Validate Python syntax
+        run: |
+          python3 -m py_compile blaze-v4/api/runtime_paths.py
+          python3 -m py_compile blaze-v4/api/config.py
+          python3 -m py_compile blaze-v4/api/system_blueprint.py
+          echo "✓ All Python files compile"
+
+      - name: Validate env template has no secrets
+        run: |
+          # Ensure no actual values are hardcoded in the template
+          if grep -E '(sk-|ghp_|gho_|password=\S|secret=\S)' blaze-v4/ops/config/blaze-runtime.env.template; then
+            echo "FAIL: Secrets detected in env template"
+            exit 1
+          fi
+          echo "✓ No secrets in env template"

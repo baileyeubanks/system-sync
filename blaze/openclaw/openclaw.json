@@ -1,0 +1,249 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.21-2",
+    "lastTouchedAt": "2026-02-25T23:28:42.777Z"
+  },
+  "env": {
+    "vars": {
+      "X_API_KEY": "Jm8YHM91BBKKYrVD9tBevsyCB",
+      "X_API_SECRET": "Klk9nnMTaYrj4rbCw3sN0iRXMzpxLdpE3sloUBitNV3rLNVvR",
+      "X_ACCESS_TOKEN": "41406974-wmBq6VlzRHwmgBI81GNpxT5pDHEaG1ltQvwDNXGJl",
+      "X_ACCESS_TOKEN_SECRET": "QxyMOCHr9WhuI5w0VPKA7qrRi109c7GsnKZgaZnQJ4dCX",
+      "FIGMA_ACCESS_TOKEN": "3cf1972a-1812-468f-a66a-da1a0f2085ba",
+      "OPENAI_API_KEY": "sk-proj-***REDACTED***",
+      "ANTHROPIC_API_KEY": "sk-ant-***REDACTED***",
+      "GOOGLE_PLACES_API_KEY": "AIza***REDACTED***",
+      "GEMINI_API_KEY": "AIza***REDACTED***"
+    }
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-18T02:05:11.370Z",
+    "lastRunVersion": "2026.2.15",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "auth": {},
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-6",
+        "fallbacks": [
+          "openai/gpt-4.1",
+          "openai/gpt-4.1-mini",
+          "google/gemini-3-flash-preview"
+        ]
+      },
+      "models": {
+        "openai/gpt-4.1": {},
+        "openai/gpt-4.1-mini": {},
+        "google/gemini-3.1-pro-preview": {},
+        "google/gemini-3-flash-preview": {},
+        "anthropic/claude-sonnet-4-6": {}
+      },
+      "workspace": "/Users/_mxappservice/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard",
+        "reserveTokens": 40000,
+        "memoryFlush": {
+          "enabled": true
+        }
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 4
+      },
+      "sandbox": {
+        "mode": "off"
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "workspace": "/Users/_mxappservice/.openclaw/workspace",
+        "agentDir": "/Users/_mxappservice/.openclaw/agents/main/agent",
+        "model": "anthropic/claude-sonnet-4-6",
+        "groupChat": {
+          "mentionPatterns": [
+            "@blazenbailey_bot"
+          ]
+        }
+      },
+      {
+        "id": "cc-worker",
+        "name": "cc-worker",
+        "workspace": "/Users/_mxappservice/.openclaw/agents/cc-worker/workspace",
+        "agentDir": "/Users/_mxappservice/.openclaw/agents/cc-worker/agent",
+        "model": "anthropic/claude-sonnet-4-6",
+        "groupChat": {
+          "mentionPatterns": [
+            "@agentcc_creativedirectorbot"
+          ]
+        }
+      },
+      {
+        "id": "acs-worker",
+        "name": "acs-worker",
+        "workspace": "/Users/_mxappservice/.openclaw/agents/acs-worker/workspace",
+        "agentDir": "/Users/_mxappservice/.openclaw/agents/acs-worker/agent",
+        "model": "anthropic/claude-sonnet-4-6",
+        "groupChat": {
+          "mentionPatterns": [
+            "@agentastro_bot"
+          ]
+        }
+      },
+      {
+        "id": "research-worker",
+        "name": "research-worker",
+        "workspace": "/Users/_mxappservice/.openclaw/workspace",
+        "agentDir": "/Users/_mxappservice/.openclaw/agents/research-worker/agent",
+        "model": "anthropic/claude-sonnet-4-6"
+      }
+    ]
+  },
+  "tools": {
+    "deny": [
+      "group:web",
+      "browser"
+    ],
+    "web": {
+      "search": {
+        "enabled": true,
+        "provider": "grok",
+        "apiKey": "Jm8YHM91BBKKYrVD9tBevsyCB",
+        "grok": {
+          "apiKey": "Jm8YHM91BBKKYrVD9tBevsyCB",
+          "model": "grok-beta"
+        }
+      }
+    },
+    "fs": {
+      "workspaceOnly": false
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": false,
+    "nativeSkills": false,
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "channels": {
+    "telegram": {
+      "name": "Blaze Master",
+      "enabled": true,
+      "commands": {
+        "native": false
+      },
+      "dmPolicy": "pairing",
+      "groups": {
+        "-1003808234745": {
+          "requireMention": true
+        },
+        "-1002381931352": {
+          "requireMention": true
+        }
+      },
+      "groupPolicy": "open",
+      "streaming": true,
+      "accounts": {
+        "main": {
+          "dmPolicy": "open",
+          "botToken": "8466222141:AAHGQFL8xe39JAw5sjD3nrNOUs-RBE8SoV8",
+          "allowFrom": [
+            "7747110667",
+            "*"
+          ],
+          "groupPolicy": "allowlist",
+          "streaming": false
+        },
+        "astro": {
+          "dmPolicy": "open",
+          "botToken": "8328122967:AAERigUAeIU4DDkRZoW5Hn-QFj5aUUaDC20",
+          "allowFrom": [
+            "7747110667",
+            "7124538299",
+            "*"
+          ],
+          "groupPolicy": "allowlist",
+          "streaming": false
+        },
+        "cc": {
+          "dmPolicy": "open",
+          "botToken": "8087232756:AAEEbKJxFpnNwC9NmMPcLuRqL5Fg07MNrOU",
+          "allowFrom": [
+            "7747110667",
+            "*"
+          ],
+          "groupPolicy": "allowlist",
+          "streaming": false
+        }
+      }
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "7e3c1a70b1816546c758bbbc78877483436dd90f5aaacfd9"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "plugins": {
+    "allow": [
+      "telegram",
+      "memory-core"
+    ],
+    "entries": {
+      "telegram": {
+        "enabled": true
+      },
+      "memory-core": {
+        "enabled": true
+      }
+    },
+    "installs": {
+      "blaze-v4-tools": {
+        "source": "path",
+        "sourcePath": "/Users/_mxappservice/.openclaw/extensions/blaze-v4-tools",
+        "installPath": "/Users/_mxappservice/.openclaw/extensions/blaze-v4-tools"
+      }
+    },
+    "slots": {
+      "memory": "memory-core"
+    }
+  },
+  "bindings": [
+    {
+      "agentId": "main",
+      "comment": "Main orchestrator \u2014 @blazenbailey_bot \u2014 Bailey",
+      "match": {
+        "channel": "telegram",
+        "accountId": "main"
+      }
+    },
+    {
+      "agentId": "acs-worker",
+      "comment": "Agent Astro \u2014 @AstroCleaningsBot \u2014 Caio / ACS",
+      "match": {
+        "channel": "telegram",
+        "accountId": "astro"
+      }
+    },
+    {
+      "agentId": "cc-worker",
+      "comment": "Creative Director \u2014 @AgentCC_CreativeDirectorBot \u2014 Bailey CC",
+      "match": {
+        "channel": "telegram",
+        "accountId": "cc"
+      }
+    }
+  ]
+}

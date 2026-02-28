@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>HOME</key>
+		<string>/Users/_mxappservice</string>
+		<key>PATH</key>
+		<string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+	</dict>
+	<key>Label</key>
+	<string>com.blaze.usage-summary</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/opt/homebrew/bin/python3</string>
+		<string>-c</string>
+		<string>import sys; sys.path.insert(0, '/Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/ops/scripts'); from blaze_helper import update_daily_summary; update_daily_summary()</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>/Users/_mxappservice/blaze-logs/usage-summary.err.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/_mxappservice/blaze-logs/usage-summary.log</string>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>23</integer>
+		<key>Minute</key>
+		<integer>59</integer>
+	</dict>
+	<key>WorkingDirectory</key>
+	<string>/Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/ops/scripts</string>
+</dict>
+</plist>

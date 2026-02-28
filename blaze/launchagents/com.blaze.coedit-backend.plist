@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Disabled</key>
+	<true/>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>HOME</key>
+		<string>/Users/_mxappservice</string>
+		<key>PATH</key>
+		<string>/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+	</dict>
+	<key>KeepAlive</key>
+	<false/>
+	<key>Label</key>
+	<string>com.blaze.coedit-backend</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3</string>
+		<string>-m</string>
+		<string>uvicorn</string>
+		<string>app.main:app</string>
+		<string>--host</string>
+		<string>127.0.0.1</string>
+		<string>--port</string>
+		<string>8000</string>
+	</array>
+	<key>RunAtLoad</key>
+	<false/>
+	<key>StandardErrorPath</key>
+	<string>/Users/_mxappservice/blaze-logs/coedit-backend.err</string>
+	<key>StandardOutPath</key>
+	<string>/Users/_mxappservice/blaze-logs/coedit-backend.log</string>
+	<key>WorkingDirectory</key>
+	<string>/Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/apps/coedit/backend</string>
+</dict>
+</plist>

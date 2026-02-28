@@ -1,0 +1,7 @@
+Listening ports:
+postgres   1697 _mxappservice    7u  IPv6 0xb447dadbed668e35      0t0  TCP [::1]:5432 (LISTEN)
+postgres   1697 _mxappservice    8u  IPv4 0x8c65b65db3850f4d      0t0  TCP 127.0.0.1:5432 (LISTEN)
+Python     4577 _mxappservice   12u  IPv4  0x1591b0af9777507      0t0  TCP 127.0.0.1:8899 (LISTEN)
+node       5808 _mxappservice   15u  IPv4  0x120bd3f5fd4018c      0t0  TCP 127.0.0.1:18789 (LISTEN)
+node       5808 _mxappservice   16u  IPv6 0x7be0440bd8657ef4      0t0  TCP [::1]:18789 (LISTEN)
+Python    39468 _mxappservice   11u  IPv4  0xe72c9ffbf3f2e81      0t0  TCP 127.0.0.1:8000 (LISTEN)

@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "gateway": {
+    "host": "0.0.0.0",
+    "port": 8899
+  },
+  "state_dir": "${OPENCLAW_STATE_DIR}",
+  "workspace": "${OPENCLAW_WORKSPACE}",
+  "manifest_path": "${OPENCLAW_CONFIG_PATH}/business_os_manifest.json",
+  "nodes": {
+    "master": {
+      "hostname": "Blaze",
+      "ip": "10.0.0.21",
+      "role": "master",
+      "services": ["blaze-api", "token-refresher", "openclaw-gateway"]
+    },
+    "worker": {
+      "hostname": "Content-Co-op-9",
+      "ip": "auto",
+      "role": "worker",
+      "services": ["openclaw-node", "contact-brain", "content-brain"]
+    }
+  },
+  "task_queue": {
+    "backend": "sqlite",
+    "path": "${OPENCLAW_STATE_DIR}/tasks.db"
+  },
+  "anti_loop": {
+    "failure_memory_path": "/Users/_mxappservice/blaze-data/failure-memory.json",
+    "max_retries": 3,
+    "window_minutes": 60
+  }
+}

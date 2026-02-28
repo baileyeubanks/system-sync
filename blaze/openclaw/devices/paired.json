@@ -1,0 +1,178 @@
+{
+  "f944ecd675031ec7f25b7b0ab4e09ce9fe6512e439b5a48b01a993fc380e26f8": {
+    "deviceId": "f944ecd675031ec7f25b7b0ab4e09ce9fe6512e439b5a48b01a993fc380e26f8",
+    "publicKey": "Avo9Hvj9CroaTlH5Ha2F3z4VufDR1wgRd0D-3zfW4rk",
+    "platform": "darwin",
+    "clientId": "cli",
+    "clientMode": "cli",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing",
+      "operator.read",
+      "operator.write"
+    ],
+    "approvedScopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing",
+      "operator.read",
+      "operator.write"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "wtV-oYyNleXqP6YDZsAQOIOu0u8IrJPPD1-4HOSvdwc",
+        "role": "operator",
+        "scopes": [
+          "operator.admin",
+          "operator.approvals",
+          "operator.pairing"
+        ],
+        "createdAtMs": 1771380323713,
+        "rotatedAtMs": 1771747873792,
+        "lastUsedAtMs": 1772252212176
+      }
+    },
+    "createdAtMs": 1771380323713,
+    "approvedAtMs": 1771713742718
+  },
+  "8de6a83a41d1daa1a36d22b84abc1286eea9f79a189273ebd0c03ac543d263e2": {
+    "deviceId": "8de6a83a41d1daa1a36d22b84abc1286eea9f79a189273ebd0c03ac543d263e2",
+    "publicKey": "PXPHjMZdax0wpZpCMoKFTAZ1JGEGr4CDjnpPTEqwP5U",
+    "platform": "darwin",
+    "clientId": "cli",
+    "clientMode": "cli",
+    "role": "operator",
+    "roles": [
+      "operator",
+      "node"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "biUCRB9m54FAx9-lAgm7sJ2Bthmv6lsEMadB02nvWuM",
+        "role": "operator",
+        "scopes": [
+          "operator.admin",
+          "operator.approvals",
+          "operator.pairing"
+        ],
+        "createdAtMs": 1771429903264
+      },
+      "node": {
+        "token": "E-VGvktJzOVQwebjN29WRRwjVxKQ3upR6UF-ljA0Aoc",
+        "role": "node",
+        "scopes": [],
+        "createdAtMs": 1771429913607
+      }
+    },
+    "createdAtMs": 1771429903264,
+    "approvedAtMs": 1771429913607
+  },
+  "fd876aac811044d8d5c7ad3937ee837742a7a1a922caca747ca38f144315add5": {
+    "deviceId": "fd876aac811044d8d5c7ad3937ee837742a7a1a922caca747ca38f144315add5",
+    "publicKey": "aAk2niTTS_R3ZgQD0Ft1bWYhabgrX9ZLose7tP6drk8",
+    "platform": "darwin",
+    "clientId": "cli",
+    "clientMode": "cli",
+    "role": "operator",
+    "roles": [
+      "operator",
+      "node"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing",
+      "operator.read"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "99biMzZ65NfHm3Ol9-kEsoiGrBYFkJ5iCEOL3NNXNVE",
+        "role": "operator",
+        "scopes": [
+          "operator.admin",
+          "operator.approvals",
+          "operator.pairing"
+        ],
+        "createdAtMs": 1771433772278
+      },
+      "node": {
+        "token": "PpuPY-aIoZVxBAZNONu70ClYHgJDlVybJ3l9ZRLN4jM",
+        "role": "node",
+        "scopes": [],
+        "createdAtMs": 1771434792936
+      }
+    },
+    "createdAtMs": 1771433772278,
+    "approvedAtMs": 1771434792936
+  },
+  "8cbf1732f9fe726ca7dad49d1c7aa0c6f7ad215b1dee919576ea83999dec23ac": {
+    "deviceId": "8cbf1732f9fe726ca7dad49d1c7aa0c6f7ad215b1dee919576ea83999dec23ac",
+    "publicKey": "oHlY2dCe_12MC6Lq1Ymn1Yc6m4Hrym-SbUQ6_q1lKVc",
+    "platform": "darwin",
+    "clientId": "cli",
+    "clientMode": "cli",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "vtH6IWp87jgLFRGM8H30_Fwsf7xOrjMMq-JNBkiO2kw",
+        "role": "operator",
+        "scopes": [
+          "operator.admin",
+          "operator.approvals",
+          "operator.pairing"
+        ],
+        "createdAtMs": 1771433842821,
+        "lastUsedAtMs": 1771433856321
+      }
+    },
+    "createdAtMs": 1771433842821,
+    "approvedAtMs": 1771433842821
+  },
+  "e175576c936626975c68a19a3b3dbd689b0d4a4eb48ce3b72d2347659320eeb4": {
+    "deviceId": "e175576c936626975c68a19a3b3dbd689b0d4a4eb48ce3b72d2347659320eeb4",
+    "publicKey": "1F_d4RzvL2ohTMXSI5D4XlaO4iv2wepZ5E2FKk6YSQ8",
+    "platform": "darwin",
+    "clientId": "gateway-client",
+    "clientMode": "backend",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.read"
+    ],
+    "approvedScopes": [
+      "operator.read"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "NcHJc7lkb2Yo625K0tBpyF1tTXbyMC5S54hzTIZC5dY",
+        "role": "operator",
+        "scopes": [
+          "operator.read"
+        ],
+        "createdAtMs": 1772053180019
+      }
+    },
+    "createdAtMs": 1772053180019,
+    "approvedAtMs": 1772053180019
+  }
+}

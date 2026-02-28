@@ -1,0 +1,3 @@
+Disk usage:
+Filesystem        Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk3s1s1   460Gi    11Gi    15Gi    44%    453k  159M    0%   /

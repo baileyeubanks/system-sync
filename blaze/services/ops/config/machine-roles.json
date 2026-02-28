@@ -1,0 +1,16 @@
+{
+  "Blaze": {
+    "role": "master",
+    "data_root": "/Users/_mxappservice/blaze-data",
+    "nas_mount_path": "/Users/_mxappservice/mnt/CC_NAS",
+    "nas_ip": "10.0.0.46",
+    "nas_usage": "media_only"
+  },
+  "Content-Co-op-9": {
+    "role": "worker",
+    "data_root": "/Users/_mxappservice/blaze-data",
+    "nas_mount_path": "/Volumes/CC_NAS",
+    "nas_ip": "10.0.0.45",
+    "nas_usage": "media_only"
+  }
+}

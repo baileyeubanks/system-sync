@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "domains": {
+    "intake": {
+      "owner": "openclaw",
+      "description": "Astro Cleaning leads, Content Co-op inquiry forms, new client onboarding, quote requests",
+      "output_path": "/Users/_mxappservice/blaze-data/clients/"
+    },
+    "comms": {
+      "owner": "openclaw",
+      "description": "Gmail (via Master only), Telegram bot, BP/Schneider Electric correspondence, Astro service comms",
+      "output_path": "/Users/_mxappservice/blaze-data/clients/"
+    },
+    "retrieval": {
+      "owner": "openclaw",
+      "description": "Google Drive search, document fetch, knowledge base queries, CeraWeek 2026 production research",
+      "output_path": "/Users/_mxappservice/blaze-data/content/"
+    },
+    "learning": {
+      "owner": "worker",
+      "description": "Batch email analysis, corpus ingestion, pattern recognition — runs on MacBook M2",
+      "output_path": "/Users/_mxappservice/blaze-data/"
+    },
+    "operations": {
+      "owner": "openclaw",
+      "description": "Google Calendar, project status, invoice triggers, Astro scheduling, Content Co-op delivery tracking",
+      "output_path": "/Users/_mxappservice/blaze-data/clients/"
+    },
+    "content": {
+      "owner": "worker",
+      "description": "Kallaway YouTube analytics, video brief generation, B2B content for BP/Schneider Electric",
+      "output_path": "/Users/_mxappservice/blaze-data/content/"
+    },
+    "contacts": {
+      "owner": "worker",
+      "description": "Contact brain, Gmail relationship mapping, Astro client history, 1Password contact sync",
+      "output_path": "/Users/_mxappservice/blaze-data/contacts/"
+    }
+  },
+  "rules": {
+    "skill_install_requires_domain": true,
+    "reject_domain_overlap": true,
+    "google_api_master_only": true,
+    "sqlite_local_ssd_only": true,
+    "vector_db_local_ssd_only": true
+  }
+}

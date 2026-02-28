@@ -2,3 +2,9 @@ node_modules/
 reports/
 *.log
 .DS_Store
+
+# Blaze secrets
+blaze/openclaw/credentials/
+blaze/openclaw/identity/
+*.env
+*.env.local

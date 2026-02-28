@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.blaze.crew-checklist</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/ops/scripts/crew_daily_checklist.py</string>
+  </array>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>6</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/_mxappservice/logs/crew-checklist.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/_mxappservice/logs/crew-checklist.log</string>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/ops/scripts</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+  </dict>
+</dict>
+</plist>

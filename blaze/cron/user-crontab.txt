@@ -1,0 +1,1 @@
+*/10 * * * * /usr/bin/python3 /Users/_mxappservice/ACS_CC_AUTOBOT/blaze-v4/ops/scripts/inbox_guard.py >> /Users/_mxappservice/blaze-data/logs/inbox_guard.log 2>&1

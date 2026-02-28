@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>ai.openclaw.gateway</string>
+    
+    <key>Comment</key>
+    <string>OpenClaw Gateway (v2026.2.26)</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>60</integer>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/bin/node</string>
+      <string>/usr/local/lib/node_modules/openclaw/dist/entry.js</string>
+      <string>gateway</string>
+      <string>--port</string>
+      <string>18789</string>
+    </array>
+    
+    <key>StandardOutPath</key>
+    <string>/Users/_mxappservice/.openclaw/logs/gateway.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/_mxappservice/.openclaw/logs/gateway.err.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+    <key>X_API_KEY</key>
+    <string>Jm8YHM91BBKKYrVD9tBevsyCB</string>
+    <key>X_API_SECRET</key>
+    <string>Klk9nnMTaYrj4rbCw3sN0iRXMzpxLdpE3sloUBitNV3rLNVvR</string>
+    <key>X_ACCESS_TOKEN</key>
+    <string>41406974-wmBq6VlzRHwmgBI81GNpxT5pDHEaG1ltQvwDNXGJl</string>
+    <key>X_ACCESS_TOKEN_SECRET</key>
+    <string>QxyMOCHr9WhuI5w0VPKA7qrRi109c7GsnKZgaZnQJ4dCX</string>
+    <key>FIGMA_ACCESS_TOKEN</key>
+    <string>3cf1972a-1812-468f-a66a-da1a0f2085ba</string>
+    <key>OPENAI_API_KEY</key>
+    <string>sk-proj-***REDACTED***</string>
+    <key>ANTHROPIC_API_KEY</key>
+    <string>sk-ant-***REDACTED***</string>
+    <key>GOOGLE_PLACES_API_KEY</key>
+    <string>AIza***REDACTED***</string>
+    <key>GEMINI_API_KEY</key>
+    <string>AIza***REDACTED***</string>
+    <key>HOME</key>
+    <string>/Users/_mxappservice</string>
+    <key>TMPDIR</key>
+    <string>/var/folders/x8/rrbhmtld6xsgv6pjzsgst4xw0000gp/T/</string>
+    <key>PATH</key>
+    <string>/Users/_mxappservice/.local/bin:/Users/_mxappservice/.npm-global/bin:/Users/_mxappservice/bin:/Users/_mxappservice/.volta/bin:/Users/_mxappservice/.asdf/shims:/Users/_mxappservice/.bun/bin:/Users/_mxappservice/Library/Application Support/fnm/aliases/default/bin:/Users/_mxappservice/.fnm/aliases/default/bin:/Users/_mxappservice/Library/pnpm:/Users/_mxappservice/.local/share/pnpm:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>OPENCLAW_GATEWAY_PORT</key>
+    <string>18789</string>
+    <key>OPENCLAW_GATEWAY_TOKEN</key>
+    <string>7e3c1a70b1816546c758bbbc78877483436dd90f5aaacfd9</string>
+    <key>OPENCLAW_LAUNCHD_LABEL</key>
+    <string>ai.openclaw.gateway</string>
+    <key>OPENCLAW_SYSTEMD_UNIT</key>
+    <string>openclaw-gateway.service</string>
+    <key>OPENCLAW_SERVICE_MARKER</key>
+    <string>openclaw</string>
+    <key>OPENCLAW_SERVICE_KIND</key>
+    <string>gateway</string>
+    <key>OPENCLAW_SERVICE_VERSION</key>
+    <string>2026.2.26</string>
+    </dict>
+  </dict>
+</plist>

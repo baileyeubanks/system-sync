@@ -1,0 +1,12 @@
+macOS version:
+ProductName:		macOS
+ProductVersion:		26.3
+BuildVersion:		25D125
+
+Hardware:
+      Model Name: Mac mini
+      Model Identifier: Mac16,10
+      Model Number: MCYT4LL/A
+      Chip: Apple M4
+      Memory: 24 GB
+      Serial Number (system): QJ5T00XTQ2
