@@ -266,3 +266,28 @@
 
 -- ~ script_feedback (acs-website reads)
 -- User feedback on generated scripts
+
+-- ─── RECENTLY ADDED TABLES (Feb 28, 2026) ─────────────────────────────────
+
+-- * ai_profiles (acs-website owns)
+-- Columns: id UUID PK, contact_id UUID FK UNIQUE, crew_member_id UUID FK UNIQUE,
+--          display_name TEXT, role TEXT CHECK(owner/admin/crew/client),
+--          interests JSONB, brief_preferences JSONB, communication_style TEXT,
+--          personality_notes TEXT, timezone TEXT, locale TEXT,
+--          created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ
+-- Indexes: idx_ai_profiles_crew (crew_member_id WHERE NOT NULL)
+-- RLS: service role full access
+-- Seeded: Bailey (owner), Caio (admin), Chiala (crew), Diego (crew)
+
+-- * messaging_channels (acs-website owns)
+-- Columns: id UUID PK, contact_id UUID FK, channel TEXT,
+--          channel_identifier TEXT, is_primary BOOLEAN, verified BOOLEAN,
+--          created_at TIMESTAMPTZ
+-- Multi-channel messaging (iMessage, Telegram, WhatsApp, email)
+-- Replaces Twilio SMS
+
+-- * message_templates (acs-website owns)
+-- Columns: id UUID PK, name TEXT, channel TEXT, subject TEXT,
+--          body_template TEXT, variables JSONB, is_active BOOLEAN,
+--          created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ
+-- Notification templates for multi-channel delivery
