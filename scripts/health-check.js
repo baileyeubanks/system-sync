@@ -25,6 +25,11 @@ const SERVICES = [
 
   // Supabase
   { name: 'Supabase', url: 'https://briokwdoonawhxisbydy.supabase.co/rest/v1/', expect: [200, 401] },
+
+  // Mac Mini (Blaze V4) — only reachable from local network
+  // Uncomment when running from a machine on the same network as 10.0.0.21
+  // { name: 'Blaze OpenClaw', url: 'http://10.0.0.21:18789/health', expect: 200, local: true },
+  // { name: 'Blaze FastAPI', url: 'http://10.0.0.21:8899/health', expect: 200, local: true },
 ];
 
 function checkUrl(service) {

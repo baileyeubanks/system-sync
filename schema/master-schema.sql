@@ -166,24 +166,24 @@
 
 -- ─── CODELIVER OWNED TABLES ──────────────────────────────────────────────────
 
--- ~ review_assets (codeliver owns)
+-- ~ assets (codeliver owns) — LEGACY NAME: review_assets
 -- Columns: id UUID, title, description, file_url, project_id, status, created_at
 -- Video/creative asset review platform
 
--- ~ asset_versions (codeliver owns)
+-- ~ versions (codeliver owns) — LEGACY NAME: asset_versions
 -- Columns: id UUID, asset_id UUID FK, version_number INT, file_url, notes, created_at
 
 -- ~ approval_gates (codeliver owns)
 -- Columns: id UUID, asset_id UUID FK, gate_name TEXT, status, required_approvers INT
 
--- ~ approval_decisions (codeliver owns)
+-- ~ approvals (codeliver owns) — LEGACY NAME: approval_decisions
 -- Columns: id UUID, gate_id UUID FK, user_id, decision TEXT, comment, decided_at
 
--- ~ review_events (codeliver owns)
+-- ~ activity_log (codeliver owns) — LEGACY NAME: review_events
 -- Audit log for all review actions
 -- Columns: id UUID, asset_id UUID FK, event_type TEXT, user_id, metadata JSONB, created_at
 
--- ~ timecoded_comments (codeliver owns)
+-- ~ comments (codeliver owns) — LEGACY NAME: timecoded_comments
 -- Columns: id UUID, asset_id UUID FK, user_id, timecode FLOAT, comment TEXT, created_at
 
 -- ─── COSCRIPT OWNED TABLES ───────────────────────────────────────────────────

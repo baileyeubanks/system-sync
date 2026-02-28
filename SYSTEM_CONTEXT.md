@@ -124,10 +124,11 @@ The Mac Mini M4 is the orchestration brain:
 ## Notification System (_notify.js)
 
 Multi-channel with fallback chain:
-1. **Telegram** (primary for crew/admin)
-2. **iMessage** (via events table → Mac Mini relay)
-3. **WhatsApp** (via Meta Cloud API)
-4. **Email** (via events table → Mac Mini gmail)
+1. **iMessage** (primary — via events table → Mac Mini relay)
+2. **WhatsApp** (via Meta Cloud API)
+3. **Email** (via events table → Mac Mini gmail)
+
+Note: Telegram group (@ACS_CC_TEAM) is used as a backup/condensed channel, NOT the primary delivery method. Individual crew and admin messages go via iMessage.
 
 All notifications logged to `notification_log` table.
 
